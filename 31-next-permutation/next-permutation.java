@@ -13,9 +13,9 @@ swap(nums, i, j);
         }
          reverse(nums, i + 1);
     }private void swap(int[] nums, int i, int j) {
-        int temp = nums[i];
+        int p = nums[i];
         nums[i] = nums[j];
-        nums[j] = temp;
+        nums[j] = p;
     }private void reverse(int[] nums, int start) {
         int end = nums.length - 1;
         while (start < end) {
