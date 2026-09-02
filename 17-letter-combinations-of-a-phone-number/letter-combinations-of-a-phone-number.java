@@ -1,20 +1,26 @@
-class Solution {
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
+public class Solution {
     public List<String> letterCombinations(String digits) {
-List<String> ans = new ArrayList<>();
-if (digits.length() == 0) {
- return ans;
+        LinkedList<String> ans = new LinkedList<String>();
+        
+        if (digits.isEmpty()) {
+            return ans;
         }
- String[] map = { "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"
-        };ans.add("");
-for (char digit : digits.toCharArray()) {
-String letters = map[digit - '0'];
-List<String> k= new ArrayList<>();
-    for (String s : ans) {
-                for (char ch : letters.toCharArray()) {
-                    k.add(s + ch);
-                }} ans = k;
-        }return ans;
+                String[] mapping = new String[] {"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+            ans.add("");
+            for (int i = 0; i < digits.length(); i++) {
+            int digit = Character.getNumericValue(digits.charAt(i));
+            while (ans.peek().length() == i) {
+                String head = ans.remove();
+                for (char letter : mapping[digit].toCharArray()) {
+                    ans.add(head + letter);
+                }
+            }
+        }
+        
+        return ans;
     }
 }
-        
-    
