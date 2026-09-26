@@ -1,18 +1,16 @@
 class Solution {
-    public int findLongestChain(int[][] pairs) {
-        Arrays.sort(pairs, (a, b) -> a[1] - b[1]);
-        
-        int count = 0;
-        int currentEnd = Integer.MIN_VALUE;
-        
-        for (int[] pair : pairs) {
-            if (pair[0] > currentEnd) {
-                count++;
-                currentEnd = pair[1];
+public int findLongestChain(int[][] pairs) {
+Arrays.sort(pairs, (a, b) -> Integer.compare(a[1], b[1]));    
+int chainLength = 0;// counter this store to the connect of elements
+        int currEnd = Integer.MIN_VALUE;
+        for (int i = 0; i < pairs.length; i++) {
+           
+            if (pairs[i][0] > currEnd) {
+                chainLength++;             
+                currEnd = pairs[i][1];     
             }
         }
         
-        return count;
-        
+    return chainLength;
     }
 }
